@@ -12,7 +12,7 @@ import {
 } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
 import { ellipse, square, triangle, airplane,contrastOutline ,moonOutline,moon,contrast} from "ionicons/icons"
-import Tab1 from "./pages/Tab1"
+import TodayMeal from "./pages/TodayMeal"
 import Tab2 from "./pages/Tab2"
 import Tab3 from "./pages/Tab3"
 import Tab4 from "./pages/Tab4"
@@ -63,7 +63,7 @@ const App = () => {
 			<IonReactRouter>
 				<IonTabs>
 					<IonRouterOutlet>
-						<Route path="/tab1" component={Tab1} exact={true} />
+						<Route path="/tab1" component={TodayMeal} exact={true} />
 						<Route path="/tab2" component={Tab2} exact={true} />
 						<Route path="/tab3" component={Tab3} exact={true} />
 						<Route path="/tab4" component={Tab4} />
