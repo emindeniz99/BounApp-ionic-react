@@ -1,0 +1,7 @@
+{
+  "name": "BounApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
