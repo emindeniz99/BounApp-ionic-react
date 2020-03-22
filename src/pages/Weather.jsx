@@ -29,7 +29,7 @@ import {
 	contrastOutline
 } from "ionicons/icons"
 
-import BounAppLogo from "./assets/SVG/Asset1.svg"
+import BounAppLogo from "./assets/BounApp.svg"
 
 import Camera from "./components/Camera"
 

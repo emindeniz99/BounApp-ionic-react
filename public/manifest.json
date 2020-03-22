@@ -1,6 +1,6 @@
 {
-  "short_name": "Ionic App",
-  "name": "My Ionic App",
+  "short_name": "Boun.App",
+  "name": "Boun.App",
   "icons": [
     {
       "src": "assets/icon/favicon.png",
@@ -12,7 +12,14 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
+    },
+    {
+      "src": "assets/icon/BounAppx1705.png",
+      "type": "image/png",
+      "sizes": "1705x1705",
+      "purpose": "maskable"
     }
+
   ],
   "start_url": ".",
   "display": "standalone",
