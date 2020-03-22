@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
 	IonContent,
 	IonHeader,
@@ -25,7 +25,14 @@ import {
 	IonListHeader,
 	IonItemSliding,
 	IonItemOptions,
-	IonItemOption
+	IonItemOption,
+	IonPopover,
+	IonButton,
+	IonImg,
+	IonModal,
+	IonSlides,
+	IonSlide,
+	IonSpinner
 } from "@ionic/react"
 import {
 	ellipse,
@@ -44,7 +51,7 @@ const data = {
 			{
 				ad: "Köfte",
 				kalori: "100 Kcal",
-				gorsel: "https....link"
+				gorsel: "https://source.unsplash.com/random/200x100"
 			}
 		],
 		anayemek: [
@@ -65,28 +72,28 @@ const data = {
 			{
 				ad: "Köfte",
 				kalori: "100 Kcal",
-				gorsel: "https....link"
+				gorsel: ""
 			},
 			{
 				ad: "armut",
 				kalori: "100 Kcal",
-				gorsel: "https....link"
+				gorsel: "https://source.unsplash.com/random"
 			}
 		],
 		salata: [
 			{
 				ad: "elma	",
 				kalori: "100 Kcal",
-				gorsel: "https....link"
+				gorsel: "https://source.unsplash.com/random"
 			},
 			{
 				ad: "armut",
-				gorsel: "https....link"
+				gorsel: "https://source.unsplash.com/random"
 			},
 			{
 				ad: "armut",
 				kalori: "100 Kcal",
-				gorsel: "https....link"
+				gorsel: "https://source.unsplash.com/random"
 			}
 		]
 	}
@@ -118,20 +125,22 @@ const MealBlock = () => {
 			</IonListHeader> */}
 				<IonGrid>
 					{Object.keys(data.yemekler).map(item => {
-						console.log(item)
+						// console.log(item)
 
 						return (
-							<IonRow class="ion-justify-content-start"
-
+							<IonRow
+								style={{ marginTop: "10px" }}
+								key={item}
+								class="ion-justify-content-start"
 							>
 								{/* <IonCol> */}
 								<IonCol size="auto">
 									<IonItem
-									size="auto"
+										size="auto"
 										lines="none"
 										// color="medium"
 										style={{
-											borderRadius: "25px",
+											borderRadius: "25px"
 											// margin: "20px"
 										}}
 										// href="#"
@@ -146,69 +155,40 @@ const MealBlock = () => {
 
 								{data.yemekler[item].map(
 									(subitessm, subitem) => {
-										console.log(
-											data.yemekler[item][subitem]
-										)
+										// console.log(
+										// 	data.yemekler[item][subitem]
+										// )
+										// <IonGrid key={item + subitem}>
+										// 	<IonRow>
+
+										// <IonItem
+										// 		lines="none"
+										// 		color="transparent"
+										// 		// href="#"
+										// 		// className="ion-activated"
+										// 	>
 										return (
-											// <IonGrid key={item + subitem}>
-											// 	<IonRow>
-
-											// <IonItem
-											// 		lines="none"
-											// 		color="transparent"
-											// 		// href="#"
-											// 		// className="ion-activated"
-											// 	>
-
-											<IonCol size="auto"
-											//  className="ion-align-self-start"
-											// size={
-											// 	10 /
-											// 	(data.yemekler[item]
-											// 		.length)
-											// }
+											<IonCol
+												key={item + subitem}
+												size="auto"
+												//  className="ion-align-self-start"
+												// size={
+												// 	10 /
+												// 	(data.yemekler[item]
+												// 		.length)
+												// }
 											>
-												<IonItem
-													lines="none"
-													color="light"
-													style={{
-														borderRadius: "25px",
-														// margin: "20px"
-													}}
-													// href="#"
-													// className="ion-activated"
-												>
-													<IonLabel
-
-													// class="ion-text-nowrap"
-													// className="ion-text-wrap"
-													// position="fixed"
-													>
-														{
-															data.yemekler[item][
-																subitem
-															].ad
-														}
-
-														{data.yemekler[item][
+												<MealItem
+													meal={
+														data.yemekler[item][
 															subitem
-														].kalori && (
-															<IonBadge style={{marginLeft:"10px"}} color="tertiary">
-																{
-																	data
-																		.yemekler[
-																		item
-																	][subitem]
-																		.kalori
-																}
-															</IonBadge>
-														)}
-													</IonLabel>
-												</IonItem>
+														]
+													}
+												/>
 											</IonCol>
-											// </IonRow>
-											// </IonGrid>
 										)
+										// </IonRow>
+										// </IonGrid>
 									}
 								)}
 								{/* </IonCol> */}
@@ -220,6 +200,89 @@ const MealBlock = () => {
 				{/* </IonList> */}
 			</IonCardContent>
 		</IonCard>
+	)
+}
+
+const MealItem = ({ meal }) => {
+	const [showPopover, setShowPopover] = useState(false)
+
+	const [imageloaded, setimageloaded] = useState(false)
+	const [imageerror, setimageerror] = useState(false)
+	return (
+		<div>
+			<IonPopover
+				isOpen={showPopover}
+				onDidDismiss={e => setShowPopover(false)}
+			>
+				{!imageerror && (
+					<img
+						alt={meal.ad + "Görseli"}
+						onLoad={() => {
+							setimageloaded(true)
+							console.log("yüklendi")
+						}}
+						onError={() => {
+							setimageerror(true)
+						}}
+						src={meal.gorsel}
+					/>
+				)}{" "}
+				{!imageloaded && !imageerror && (
+					<IonSpinner className="ion-text-center" name="crescent" />
+				)}
+				{imageerror && <h1>Resim yüklenemedi.</h1>}
+				<h1>{meal.ad}</h1>
+			</IonPopover>
+
+			{/* <IonModal
+				isOpen={showPopover}
+				swipeToClose={true}
+				// presentingElement={pageRef.current}
+				onDidDismiss={() => setShowPopover(false)}
+			>
+				<p>This is modal content</p>
+				<IonImg src={meal.gorsel} />
+				<IonButton onClick={() => setShowPopover(false)}>
+					Close Modal
+				</IonButton>
+			</IonModal> */}
+
+			{/* <IonButton onClick={() => setShowPopover(true)}>
+				Show Popover
+			</IonButton> */}
+
+			<IonItem
+				onClick={() => setShowPopover(true)}
+				lines="none"
+				color="light"
+				style={{
+					borderRadius: "25px"
+					// margin: "20px"
+				}}
+				// href="#"
+				// className="ion-activated"
+			>
+				<IonLabel
+
+				// class="ion-text-nowrap"
+				// className="ion-text-wrap"
+				// position="fixed"
+				>
+					{meal.ad}
+
+					{meal.kalori && (
+						<IonBadge
+							style={{
+								marginLeft: "10px"
+							}}
+							color="tertiary"
+						>
+							{meal.kalori}
+						</IonBadge>
+					)}
+				</IonLabel>
+			</IonItem>
+		</div>
 	)
 }
 
