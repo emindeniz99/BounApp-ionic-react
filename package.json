@@ -7,6 +7,7 @@
     "@ionic/pwa-elements": "^1.5.1",
     "@ionic/react": "^5.0.0",
     "@ionic/react-router": "^5.0.0",
+    "@sentry/browser": "^5.15.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.3",
@@ -29,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "push":"ionic build && cd build && ren index.html 200.html && surge . --domain gleaming-glue.surge.sh"
+    "push": "ionic build && cd build && ren index.html 200.html && surge . --domain gleaming-glue.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
