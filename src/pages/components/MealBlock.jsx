@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
 	IonContent,
 	IonHeader,
@@ -111,7 +111,10 @@ const MealBlock = () => {
 	return (
 		<IonCard style={{ backgroundImage: `url(${Background})` }}>
 			<IonCardHeader>
-				<IonCardSubtitle>Hava durmu gösterebilir</IonCardSubtitle>
+				<IonCardSubtitle>Hava durmu gösterebilir
+
+					
+				</IonCardSubtitle>
 				<IonCardTitle className="ion-text-center">
 					{data.ogunisim}
 					<IonIcon icon={partlySunny}></IonIcon>
@@ -285,5 +288,6 @@ const MealItem = ({ meal }) => {
 		</div>
 	)
 }
+
 
 export default MealBlock

@@ -6,10 +6,18 @@ import {
 	IonTitle,
     IonToolbar,
     IonButtons,
-    IonBackButton
+    IonBackButton,
+    IonIcon,
+    IonGrid,
+    IonRow,
+    IonCol
 } from "@ionic/react"
-import ExploreContainer from "../components/ExploreContainer"
+import ExploreContainer from "../../components/ExploreContainer"
 import "./Tab3.css"
+import { ellipse, square, triangle, pizzaOutline} from "ionicons/icons"
+
+
+import Camera from "../components/Camera" 
 
 const Tab3 = () => {
 	return (
@@ -19,18 +27,21 @@ const Tab3 = () => {
 					{/* <IonButtons slot="start">
 						<IonBackButton defaultHref="/" />
 					</IonButtons> */}
-
-					<IonTitle>Tab ss3</IonTitle>
+        <IonIcon icon={pizzaOutline} />
+					<IonTitle>Aylık Yemek Listesi</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent>
+                
 				<IonHeader collapse="condense">
 					<IonToolbar>
-						<IonTitle size="large">Taddb 3</IonTitle>
+						<IonTitle size="large">Aylık Yemek Listesi</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-
-				<h1>
+                <Camera/>
+                <IonGrid fixed>
+				<IonRow>
+					{[0,1,3].map((i)=><IonCol key={i} size="12"  size-md="6" ><h1>
 					Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
 					metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir
 					hurufat numune kitabı oluşturmak üzere bir yazı galerisini
@@ -67,7 +78,16 @@ const Tab3 = () => {
 					Rönesans döneminde çok popüler olmuştur. Lorem Ipsum
 					pasajının ilk satırı olan "Lorem ipsum dolor sit amet"
 					1.10.32 sayılı bölümdeki bir satırdan gelmektedir.
-				</h1>
+				</h1></IonCol>)}
+                    
+					<IonCol size="12" size-md="6" >ion-col</IonCol>
+					<IonCol size="12" size-md="6"  >ion-col</IonCol>
+					<IonCol size="12" size-md="6"  >ion-col</IonCol>
+				</IonRow>
+
+				
+			</IonGrid>
+				
 			</IonContent>
 		</IonPage>
 	)

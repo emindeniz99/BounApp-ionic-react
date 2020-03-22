@@ -12,12 +12,10 @@ import {
     IonRow,
     IonCol
 } from "@ionic/react"
-import ExploreContainer from "../components/ExploreContainer"
+import ExploreContainer from "../../components/ExploreContainer"
 import "./Tab3.css"
 import { ellipse, square, triangle, pizzaOutline} from "ionicons/icons"
 
-
-import Camera from "./components/Camera" 
 
 const Tab3 = () => {
 	return (
@@ -32,13 +30,11 @@ const Tab3 = () => {
 				</IonToolbar>
 			</IonHeader>
 			<IonContent>
-                
 				<IonHeader collapse="condense">
 					<IonToolbar>
 						<IonTitle size="large">Aylık Yemek Listesi</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-                <Camera/>
                 <IonGrid fixed>
 				<IonRow>
 					{[0,1,3].map((i)=><IonCol key={i} size="12"  size-md="6" ><h1>

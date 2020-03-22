@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import {
 	IonContent,
 	IonHeader,
@@ -10,10 +10,10 @@ import {
 	IonIcon,
 	IonGrid,
 	IonRow,
-	IonCol
+	IonCol,
+	IonText
 } from "@ionic/react"
 import ExploreContainer from "../components/ExploreContainer"
-import "./Tab3.css"
 import { ellipse, square, triangle, pizzaOutline } from "ionicons/icons"
 
 import BounAppLogo from "./assets/SVG/Asset1.svg"
@@ -22,7 +22,15 @@ import Camera from "./components/Camera"
 
 import MealBlock from "./components/MealBlock"
 
+import Weather from "./components/WeatherBlock"
+
 const Tab3 = () => {
+	const [dateshown, setdateshown] = useState(null)
+
+	useEffect(() => {
+		setdateshown(new Date())
+	}, [])
+
 	return (
 		<IonPage>
 			<IonHeader translucent>
@@ -30,7 +38,7 @@ const Tab3 = () => {
 					{/* <IonButtons slot="start">
 						<IonBackButton defaultHref="/" />
 					</IonButtons> */}
-					<IonIcon  icon={BounAppLogo} />
+					<IonIcon icon={BounAppLogo} />
 					<IonTitle>Boun.App Yemek</IonTitle>
 				</IonToolbar>
 			</IonHeader>
@@ -41,6 +49,11 @@ const Tab3 = () => {
 					</IonToolbar>
 				</IonHeader>
 				<IonGrid fixed>
+					<IonRow class="ion-align-items-center">
+						<IonCol size="auto">
+							<IonText >sadas</IonText>
+						</IonCol>
+					</IonRow>
 					<IonRow>
 						{[0, 1, 3].map(i => (
 							<IonCol key={i} size="12" size-md="6">
