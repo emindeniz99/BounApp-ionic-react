@@ -44,79 +44,79 @@ import {
 
 import Background from "../assets/oglearka.png"
 
-const data = {
-	ogunisim: "Öğlen",
-	yemekler: {
-		corba: [
-			{
-				ad: "Köfte",
-				kalori: "100 Kcal",
-				gorsel: "https://source.unsplash.com/random/200x100"
-			}
-		],
-		anayemek: [
-			{
-				ad: "Köfte",
-				kalori: "100 Kcal",
-				gorsel: "https....link"
-			}
-		],
-		alternatif: [
-			{
-				ad: "Köfte",
-				kalori: "100 Kcal",
-				gorsel: "https....link"
-			}
-		],
-		pilav: [
-			{
-				ad: "Köfte",
-				kalori: "100 Kcal",
-				gorsel: ""
-			},
-			{
-				ad: "armut",
-				kalori: "100 Kcal",
-				gorsel: "https://source.unsplash.com/random"
-			}
-		],
-		salata: [
-			{
-				ad: "elma	",
-				kalori: "100 Kcal",
-				gorsel: "https://source.unsplash.com/random"
-			},
-			{
-				ad: "armut",
-				gorsel: "https://source.unsplash.com/random"
-			},
-			{
-				ad: "armut",
-				kalori: "100 Kcal",
-				gorsel: "https://source.unsplash.com/random"
-			}
-		]
-	}
-}
+// const data = {
+// 	ogunisim: "Öğlen",
+// 	yemekler: {
+// 		corba: [
+// 			{
+// 				ad: "Köfte",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https://source.unsplash.com/random/200x100"
+// 			}
+// 		],
+// 		anayemek: [
+// 			{
+// 				ad: "Köfte",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https....link"
+// 			}
+// 		],
+// 		alternatif: [
+// 			{
+// 				ad: "Köfte",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https....link"
+// 			}
+// 		],
+// 		pilav: [
+// 			{
+// 				ad: "Köfte",
+// 				kalori: "100 Kcal",
+// 				gorsel: ""
+// 			},
+// 			{
+// 				ad: "armut",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https://source.unsplash.com/random"
+// 			}
+// 		],
+// 		salata: [
+// 			{
+// 				ad: "elma	",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https://source.unsplash.com/random"
+// 			},
+// 			{
+// 				ad: "armut",
+// 				gorsel: "https://source.unsplash.com/random"
+// 			},
+// 			{
+// 				ad: "armut",
+// 				kalori: "100 Kcal",
+// 				gorsel: "https://source.unsplash.com/random"
+// 			}
+// 		]
+// 	}
+// }
 
 const logomap = {
 	corba: pizzaOutline,
 	anayemek: pizzaOutline,
-	alternatif: pizzaOutline,
-	pilav: pizzaOutline,
-	salata: pizzaOutline
+	vejeteryan: pizzaOutline,
+	yardimciyemek: pizzaOutline,
+	secmeli: pizzaOutline
 }
 
-const MealBlock = () => {
+const MealBlock = ({ mealdata, ogunadi }) => {
+	console.log("ogun blocku:",ogunadi,mealdata)
+	const [data, setdata] = useState(mealdata)
+
 	return (
 		<IonCard style={{ backgroundImage: `url(${Background})` }}>
 			<IonCardHeader>
-				<IonCardSubtitle>Hava durmu gösterebilir
-
-					
-				</IonCardSubtitle>
+				<IonCardSubtitle>Hava durmu gösterebilir</IonCardSubtitle>
 				<IonCardTitle className="ion-text-center">
-					{data.ogunisim}
+					{ogunadi}
 					<IonIcon icon={partlySunny}></IonIcon>
 				</IonCardTitle>
 			</IonCardHeader>
@@ -127,7 +127,7 @@ const MealBlock = () => {
 				<IonLabel>Trending</IonLabel>
 			</IonListHeader> */}
 				<IonGrid>
-					{Object.keys(data.yemekler).map(item => {
+					{Object.keys(data).map(item => {
 						// console.log(item)
 
 						return (
@@ -156,57 +156,52 @@ const MealBlock = () => {
 									</IonItem>
 								</IonCol>
 
-								{data.yemekler[item].map(
-									(subitessm, subitem) => {
-										// console.log(
-										// 	data.yemekler[item][subitem]
-										// )
-										// <IonGrid key={item + subitem}>
-										// 	<IonRow>
+								{data[item].map((subitessm, subitem) => {
+									// console.log(
+									// 	data.yemekler[item][subitem]
+									// )
+									// <IonGrid key={item + subitem}>
+									// 	<IonRow>
 
-										// <IonItem
-										// 		lines="none"
-										// 		color="transparent"
-										// 		// href="#"
-										// 		// className="ion-activated"
-										// 	>
-										return (
-											<IonCol
-												key={item + subitem}
-												size="auto"
-												//  className="ion-align-self-start"
-												// size={
-												// 	10 /
-												// 	(data.yemekler[item]
-												// 		.length)
-												// }
-											>
-												<MealItem
-													meal={
-														data.yemekler[item][
-															subitem
-														]
-													}
-												/>
-											</IonCol>
-										)
-										// </IonRow>
-										// </IonGrid>
-									}
-								)}
-								{/* </IonCol> */}
-								{/* </IonItem> */}
+									// <IonItem
+									// 		lines="none"
+									// 		color="transparent"
+									// 		// href="#"
+									// 		// className="ion-activated"
+									// 	>
+									return (
+										<IonCol
+											key={item + subitem}
+											size="auto"
+											//  className="ion-align-self-start"
+											// size={
+											// 	10 /
+											// 	(data.yemekler[item]
+											// 		.length)
+											// }
+										>
+											<MealItem
+												meal={data[item][subitem]}
+											/>
+										</IonCol>
+									)
+								})}
 							</IonRow>
 						)
 					})}
 				</IonGrid>
-				{/* </IonList> */}
 			</IonCardContent>
 		</IonCard>
 	)
 }
 
 const MealItem = ({ meal }) => {
+	const mealitem = {
+		isim: meal.isim,
+		gorsel: "tba",
+		kalori: meal.more.kalori,
+		icindekiler:meal.more.icindekiler
+	}
 	const [showPopover, setShowPopover] = useState(false)
 
 	const [imageloaded, setimageloaded] = useState(false)
@@ -219,7 +214,7 @@ const MealItem = ({ meal }) => {
 			>
 				{!imageerror && (
 					<img
-						alt={meal.ad + "Görseli"}
+						alt={mealitem.isim + "Görseli"}
 						onLoad={() => {
 							setimageloaded(true)
 							console.log("yüklendi")
@@ -227,14 +222,15 @@ const MealItem = ({ meal }) => {
 						onError={() => {
 							setimageerror(true)
 						}}
-						src={meal.gorsel}
+						src={mealitem.gorsel}
 					/>
 				)}{" "}
 				{!imageloaded && !imageerror && (
 					<IonSpinner className="ion-text-center" name="crescent" />
 				)}
 				{imageerror && <h1>Resim yüklenemedi.</h1>}
-				<h1>{meal.ad}</h1>
+				<h1>{mealitem.isim}</h1>
+				{mealitem.icindekiler.map((s)=><h4 key={s} >{s}</h4>)}
 			</IonPopover>
 
 			{/* <IonModal
@@ -249,11 +245,6 @@ const MealItem = ({ meal }) => {
 					Close Modal
 				</IonButton>
 			</IonModal> */}
-
-			{/* <IonButton onClick={() => setShowPopover(true)}>
-				Show Popover
-			</IonButton> */}
-
 			<IonItem
 				onClick={() => setShowPopover(true)}
 				lines="none"
@@ -262,25 +253,22 @@ const MealItem = ({ meal }) => {
 					borderRadius: "25px"
 					// margin: "20px"
 				}}
-				// href="#"
-				// className="ion-activated"
 			>
 				<IonLabel
-
-				// class="ion-text-nowrap"
-				// className="ion-text-wrap"
-				// position="fixed"
+					// class="ion-text-nowrap"
+					className="ion-text-wrap"
+					// position="fixed"
 				>
-					{meal.ad}
+					{mealitem.isim}
 
-					{meal.kalori && (
+					{mealitem.kalori && (
 						<IonBadge
 							style={{
 								marginLeft: "10px"
 							}}
 							color="tertiary"
 						>
-							{meal.kalori}
+							{mealitem.kalori}
 						</IonBadge>
 					)}
 				</IonLabel>
@@ -288,6 +276,5 @@ const MealItem = ({ meal }) => {
 		</div>
 	)
 }
-
 
 export default MealBlock

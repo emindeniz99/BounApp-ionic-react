@@ -36,6 +36,7 @@ import MealBlock from "./components/MealBlock"
 import Weather from "./components/WeatherBlock"
 
 const Tab3 = ({ darkMode, darkModeHandler }) => {
+	console.log("setting component")
 	return (
 		<IonPage>
 			<IonHeader translucent>
@@ -65,10 +66,10 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 					<IonRow className="ion-align-items-center">
 						<IonCol className="ion-align-self-center" sizeMd="6" offsetMd="3">
 							<IonList>
-								<IonItemDivider>Default Toggle</IonItemDivider>
+								<IonItemDivider>Basit Ayarlar</IonItemDivider>
 								<IonItem>
 									<IonLabel>
-										Checked: {JSON.stringify(darkMode)}
+										Karanlık Modu: {darkMode?"Açık":"Kapalı"}
 									</IonLabel>
 									<IonToggle
 										checked={darkMode}
@@ -76,7 +77,7 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 									/>
 								</IonItem>
 
-								<IonItemDivider>Disabled Toggle</IonItemDivider>
+								{/* <IonItemDivider>Disabled Toggle</IonItemDivider>
 								<IonItem>
 									<IonToggle disabled />
 								</IonItem>
@@ -122,18 +123,13 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 								<IonItem>
 									<IonLabel>Mushrooms</IonLabel>
 									<IonToggle value="mushrooms" />
-								</IonItem>
+								</IonItem> */}
 							</IonList>
 						</IonCol>
 					</IonRow>
 					<IonRow>
-						{[0, 1, 3].map(i => (
-							<IonCol key={i} size="12" size-md="6">
-								<MealBlock></MealBlock>
-							</IonCol>
-						))}
 
-						<IonCol size="12" size-md="6">
+						{/* <IonCol size="12" size-md="6">
 							ion-col
 						</IonCol>
 						<IonCol size="12" size-md="6">
@@ -141,7 +137,7 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 						</IonCol>
 						<IonCol size="12" size-md="6">
 							ion-col
-						</IonCol>
+						</IonCol> */}
 					</IonRow> 
 				</IonGrid>
 			</IonContent>

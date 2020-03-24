@@ -93,11 +93,11 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 								<IonListHeader>
 									<IonLabel>Çok Yakındakiler</IonLabel>
 								</IonListHeader>
-								{comingsoonlist.map(item => (
+								
 									<IonItem>
-										<IonLabel>{item}</IonLabel>
+										<IonLabel>gg</IonLabel>
 									</IonItem>
-								))}
+							
 							</IonList>
 						</IonCol>
 					</IonRow>

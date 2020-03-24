@@ -24,20 +24,25 @@ import MealBlock from "./components/MealBlock"
 
 import Weather from "./components/WeatherBlock"
 
+import { db, getMeal } from "../services/db"
+
 const Tab3 = () => {
 	const [dateshown, setdateshown] = useState(null)
 
+	const [dailymealdata, setdailymealdata] = useState(null)
+
 	useEffect(() => {
 		setdateshown(new Date())
+		getMeal("2020-03-24").then(d => {
+			console.log("veri çekildi",d)
+			setdailymealdata(d)
+		})
 	}, [])
 
 	return (
 		<IonPage>
 			<IonHeader translucent>
 				<IonToolbar>
-					{/* <IonButtons slot="start">
-						<IonBackButton defaultHref="/" />
-					</IonButtons> */}
 					<IonIcon icon={BounAppLogo} />
 					<IonTitle>Boun.App Yemek</IonTitle>
 				</IonToolbar>
@@ -51,25 +56,29 @@ const Tab3 = () => {
 				<IonGrid fixed>
 					<IonRow class="ion-align-items-center">
 						<IonCol size="auto">
-							<IonText >sadas</IonText>
+							<IonText>
+								Tarih seç: (select gelecek buraya)
+							</IonText>
 						</IonCol>
 					</IonRow>
 					<IonRow>
-						{[0, 1, 3].map(i => (
-							<IonCol key={i} size="12" size-md="6">
-								<MealBlock></MealBlock>
+						{dailymealdata ? (
+							Object.keys(dailymealdata)
+								.filter(i => i !== "gun")
+								.map(i => (
+									<IonCol key={i} size="12" size-md="6">
+										<MealBlock
+											mealdata={dailymealdata[i]}
+											ogunadi={i}
+										></MealBlock>
+									</IonCol>
+								))
+						) : (
+							<IonCol size="12" size-md="6">
+								Bugün için yemek bulunamadı.( internet bağlantınızı kontrol edin) ( Eğer
+								telefonunuzun tarihi hatalıysa düzeltiniz)
 							</IonCol>
-						))}
-
-						<IonCol size="12" size-md="6">
-							ion-col
-						</IonCol>
-						<IonCol size="12" size-md="6">
-							ion-col
-						</IonCol>
-						<IonCol size="12" size-md="6">
-							ion-col
-						</IonCol>
+						)}
 					</IonRow>
 				</IonGrid>
 			</IonContent>

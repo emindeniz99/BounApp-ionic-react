@@ -51,7 +51,8 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 		"Kahvaltı",
 		"Hesap oluşturma",
 		"Kilyos Özel Bölümü",
-		"Otobüs Saatleri"
+		"Otobüs ve Metro Saatleri"
+		
 	])
 
 	return (
@@ -93,8 +94,8 @@ const Tab3 = ({ darkMode, darkModeHandler }) => {
 								<IonListHeader>
 									<IonLabel>Çok Yakındakiler</IonLabel>
 								</IonListHeader>
-								{comingsoonlist.map(item => (
-									<IonItem>
+								{comingsoonlist.map((item,index) => (
+									<IonItem key={index}>
 										<IonLabel>{item}</IonLabel>
 									</IonItem>
 								))}

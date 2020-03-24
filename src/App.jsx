@@ -91,6 +91,7 @@ const App = () => {
 						<Route path="/notes" component={Notes} exact={true} />
 						<Route path="/soon" component={Soon} exact={true} />
 						<Route
+						exact={true}
 							path="/settings"
 							render={props => (
 								<Settings
