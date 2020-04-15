@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "push": "ionic build && cd build && ren index.html 200.html && surge . --domain gleaming-glue.surge.sh"
+    "push": "ionic build && cd build && ren index.html 200.html && echo beta.boun.app > CNAME && surge . "
   },
   "eslintConfig": {
     "extends": "react-app"
